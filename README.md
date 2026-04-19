@@ -98,7 +98,7 @@ docs/report-assets.md Screenshot and GIF capture checklist
 docs/notes-verification.md  Cross-check against the assignment and hazard notes
 ```
 
-## Report Wording
+## Report 
 
 The project was implemented as a browser-based simulator using HTML, CSS, and JavaScript. JavaScript handles instruction parsing, RAW dependency detection, stall insertion, forwarding behavior, and cycle-by-cycle trace generation. HTML and CSS implement the instruction editor, controls, hazard panel, and pipeline execution table.
 
