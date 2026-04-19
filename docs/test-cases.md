@@ -2,6 +2,18 @@
 
 Use these cases in the final report screenshots. Each case is represented in the built-in example buttons in `plain-js/index.html`.
 
+Live demo for report and sharing:
+
+```text
+https://ap2844.github.io/Pipeline-Hazard-Simulator/
+```
+
+Source repository:
+
+```text
+https://github.com/ap2844/Pipeline-Hazard-Simulator
+```
+
 ## 1. No Dependencies
 
 Program:

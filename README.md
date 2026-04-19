@@ -1,5 +1,7 @@
 # Pipeline Hazard Simulator
 
+[Live Demo](https://ap2844.github.io/Pipeline-Hazard-Simulator/) | [Source Code](https://github.com/ap2844/Pipeline-Hazard-Simulator) | [Test Cases](docs/test-cases.md) | [Notes Verification](docs/notes-verification.md)
+
 This is the plain HTML/CSS/JavaScript implementation of the FoCS Pipeline Hazard Simulator assignment.
 
 Public repository:
@@ -19,6 +21,18 @@ The runnable app is here:
 ```text
 plain-js/index.html
 ```
+
+## What It Shows
+
+The simulator visualizes how instructions move through a single-issue, in-order pipeline. It highlights RAW hazards, inserts explicit `STALL` cells, and lets forwarding visibly reduce stalls where the lecture notes say forwarding should help.
+
+Good demo sequence:
+
+1. Open the live demo.
+2. Click `Load-use hazard`.
+3. Step through the pipeline with forwarding off and split register access off.
+4. Turn forwarding and split register access on.
+5. Compare the stall count and hazard explanation panel.
 
 ## How to Run
 
@@ -58,6 +72,20 @@ http://localhost:8000
 - Step, run/pause, and reset controls.
 - Pipeline table, hazard explanations, total cycle count, and stall count.
 
+## Screenshots and Demo GIF
+
+Screenshots are not committed yet. Recommended files to add before final submission:
+
+```text
+docs/screenshots/instruction-editor.png
+docs/screenshots/baseline-stalls.png
+docs/screenshots/forwarding-comparison.png
+docs/screenshots/hazard-panel.png
+docs/screenshots/demo.gif
+```
+
+Use the checklist in [docs/report-assets.md](docs/report-assets.md) to capture the images for the report.
+
 ## Project Layout
 
 ```text
@@ -66,6 +94,7 @@ plain-js/index.html   Page structure
 plain-js/styles.css   Visual design and responsive layout
 plain-js/app.js       Parser, scheduler, hazards, controls, and rendering
 plain-js/README.md    Notes for the plain-JS version
+docs/report-assets.md Screenshot and GIF capture checklist
 docs/notes-verification.md  Cross-check against the assignment and hazard notes
 ```
 
