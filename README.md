@@ -2,6 +2,18 @@
 
 This is the plain HTML/CSS/JavaScript implementation of the FoCS Pipeline Hazard Simulator assignment.
 
+Public repository:
+
+```text
+https://github.com/ap2844/Pipeline-Hazard-Simulator
+```
+
+Live demo:
+
+```text
+https://ap2844.github.io/Pipeline-Hazard-Simulator/
+```
+
 The runnable app is here:
 
 ```text
@@ -49,6 +61,7 @@ http://localhost:8000
 ## Project Layout
 
 ```text
+index.html            GitHub Pages redirect to the simulator
 plain-js/index.html   Page structure
 plain-js/styles.css   Visual design and responsive layout
 plain-js/app.js       Parser, scheduler, hazards, controls, and rendering
