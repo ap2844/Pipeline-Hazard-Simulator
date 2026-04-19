@@ -1,0 +1,14 @@
+node_modules/
+.local/
+dist/
+coverage/
+playwright-report/
+test-results/
+.vite/
+*.tsbuildinfo
+.DS_Store
+.codex
+npm-debug.log*
+*.pdf
+*.docx
+*:Zone.Identifier

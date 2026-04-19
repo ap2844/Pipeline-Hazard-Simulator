@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <title>Pipeline Hazard Simulator</title>
+    <link rel="stylesheet" href="./styles.css?v=matrix-combobox-20260419" />
+  </head>
+  <body>
+    <canvas id="matrixCanvas" class="matrix-canvas" aria-hidden="true"></canvas>
+    <div class="matrix-rain" aria-hidden="true">
+      <span>010010110101001101001011010100110100101101010011</span>
+      <span>101101001011010011010010110101001101001011010100</span>
+      <span>001101010010110100110100101101010011010010110101</span>
+      <span>110100101101001101001011010100110100101101010011</span>
+      <span>010011010010110101001101001011010100110100101101</span>
+      <span>101001101001011010100110100101101001101001011010</span>
+      <span>011010100110100101101010011010010110101001101001</span>
+      <span>100101101010011010010110100110100101101010011010</span>
+    </div>
+    <main class="app-shell">
+      <header class="app-header">
+        <pre class="ascii-logo" aria-hidden="true">
+ ____  ___ ____  _____ _     ___ _   _ _____
+|  _ \|_ _|  _ \| ____| |   |_ _| \ | | ____|
+| |_) || || |_) |  _| | |    | ||  \| |  _|
+|  __/ | ||  __/| |___| |___ | || |\  | |___
+|_|   |___|_|   |_____|_____|___|_| \_|_____|
+        </pre>
+        <p class="eyebrow">FoCS Course Project</p>
+        <h1>Pipeline Hazard Simulator</h1>
+        <p>Visualize RAW hazards, stalls, and forwarding across 4-stage and 5-stage in-order pipelines.</p>
+        <p class="top-note">NOTE: STALL cells appear between dependent instructions when a RAW value is not ready. With forwarding off and split reg off, LW -> ADD shows 3 stalls. With forwarding on and split reg on, it shows 1 stall.</p>
+        <div class="terminal-status" aria-label="Simulator status">
+          <span id="matrixStatus">SYSTEM: WAITING FOR TRACE</span>
+          <span>MODE: IN-ORDER</span>
+          <span>HAZARD: RAW</span>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <aside class="left-column">
+          <section class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Program</p>
+                <h2>Instructions</h2>
+              </div>
+              <button id="addInstruction" class="icon-button" type="button" title="Add instruction">+</button>
+            </div>
+
+            <div id="examples" class="example-strip" aria-label="Example programs"></div>
+            <div id="instructionList" class="instruction-list"></div>
+            <div id="errors" class="error-box hidden" role="alert"></div>
+            <p class="hint">Each row is a typeable dropdown for a complete instruction. Accepted forms: ADD/SUB R1, R2, R3 and LW/SW R1, offset(R2). Max 10 instructions.</p>
+          </section>
+
+          <section class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Dependencies</p>
+                <h2>RAW hazard analysis</h2>
+              </div>
+            </div>
+            <div id="hazards"></div>
+          </section>
+        </aside>
+
+        <section class="right-column">
+          <section class="panel controls-panel">
+            <div class="control-group">
+              <span class="control-label">Pipeline</span>
+              <div class="segmented" role="group" aria-label="Pipeline Type">
+                <button id="fourStage" type="button">4-stage</button>
+                <button id="fiveStage" type="button">5-stage</button>
+              </div>
+            </div>
+
+            <label class="switch">
+              <input id="forwarding" type="checkbox" />
+              <span>Forwarding</span>
+            </label>
+
+            <label class="switch">
+              <input id="splitAccess" type="checkbox" />
+              <span>Split reg</span>
+            </label>
+
+            <div class="run-controls">
+              <button id="step" class="icon-button" type="button" title="Step">>|</button>
+              <button id="runPause" class="primary-button" type="button">Run</button>
+              <button id="reset" class="icon-button" type="button" title="Reset">R</button>
+            </div>
+
+            <div class="cycle-readout">Cycle <strong id="cycle">0</strong> / <span id="totalCycles">0</span></div>
+          </section>
+
+          <section class="summary-grid" aria-label="Simulation summary">
+            <div class="metric"><span>Instructions</span><strong id="instructionCount">0</strong></div>
+            <div class="metric"><span>Total cycles</span><strong id="metricCycles">0</strong></div>
+            <div class="metric"><span>Stalls</span><strong id="stallCount">0</strong></div>
+            <div class="metric"><span>RAW hazards</span><strong id="hazardCount">0</strong></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Trace</p>
+                <h2>Pipeline execution table</h2>
+              </div>
+              <div id="stageKey" class="stage-key"></div>
+            </div>
+            <div id="pipelineGrid" class="table-wrap"></div>
+            <div class="trace-legend" aria-label="Pipeline table legend">
+              <span>[IF]/[ID]/[EX]/[MEM]/[WB] = occupied pipeline stage</span>
+              <span>!STALL! = inserted RAW delay</span>
+              <span>blank = not started yet or already completed</span>
+              <span>no forwarding + no split reg makes load-use show 3 stalls</span>
+            </div>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js?v=matrix-combobox-20260419"></script>
+  </body>
+</html>
