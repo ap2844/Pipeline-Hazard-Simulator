@@ -12,3 +12,4 @@
 - Forwarding is modeled as a timing improvement in the schedule and hazard explanation, not as a datapath animation.
 - Empty table cells mean the instruction has not started yet or has already completed.
 - Inserted delays are counted as stalls and rendered as explicit `STALL` cells.
+- In a cycle with a `STALL`, younger instructions below that stalled row are rendered blank for that same cycle.

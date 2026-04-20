@@ -502,18 +502,31 @@ function renderGrid() {
     return;
   }
 
+  const firstStallRowByCycle = new Map();
+  state.trace.rows.forEach((row, rowIndex) => {
+    row.cells.forEach((value, index) => {
+      const cycle = index + 1;
+      if (value === "STALL" && !firstStallRowByCycle.has(cycle)) {
+        firstStallRowByCycle.set(cycle, rowIndex);
+      }
+    });
+  });
+
   const cycleHeaders = Array.from({ length: state.trace.totalCycles }, (_, index) => `<th>${index + 1}</th>`).join("");
   const rows = state.trace.rows
-    .map((row) => {
+    .map((row, rowIndex) => {
       const cells = row.cells
         .map((value, index) => {
           const cycle = index + 1;
+          const stallRow = firstStallRowByCycle.get(cycle);
+          const hiddenBelowStall = stallRow !== undefined && rowIndex > stallRow;
+          const displayValue = hiddenBelowStall ? "" : value;
           const classes = [];
           if (cycle === state.cycle) classes.push("current-cycle");
           if (cycle > state.cycle) classes.push("future-cycle");
-          if (value === "STALL") classes.push("stall-cell");
-          if (value && value !== "STALL") classes.push("stage-cell");
-          return `<td class="${classes.join(" ")}">${cycle <= state.cycle ? value : ""}</td>`;
+          if (displayValue === "STALL") classes.push("stall-cell");
+          if (displayValue && displayValue !== "STALL") classes.push("stage-cell");
+          return `<td class="${classes.join(" ")}">${cycle <= state.cycle ? displayValue : ""}</td>`;
         })
         .join("");
 
