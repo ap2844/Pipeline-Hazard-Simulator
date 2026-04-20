@@ -37,7 +37,7 @@ If `xdg-open` is not available, open the file manually from your file browser.
 - Forwarding mode.
 - Split register access toggle.
 - Step, run/pause, and reset controls.
-- Stalls rendered as blank pause columns.
+- Stalls rendered as explicit `STALL` cells.
 - RAW hazard explanation panel.
 - Built-in example programs for report screenshots.
 
@@ -45,4 +45,4 @@ If `xdg-open` is not available, open the file manually from your file browser.
 
 The project was implemented as a browser-based simulator using HTML, CSS, and JavaScript. JavaScript handles instruction parsing, RAW dependency detection, stall insertion, forwarding behavior, and cycle-by-cycle trace generation. HTML and CSS implement the instruction editor, controls, hazard panel, and pipeline execution table.
 
-Timing note: with forwarding disabled and split register access disabled, `LW R1, 10(R2)` followed by `ADD R3, R1, R5` produces 3 blank pause columns. With forwarding enabled and split register access enabled, the same load-use dependency produces 1 blank pause column before `EX`.
+Timing note: with forwarding disabled and split register access disabled, `LW R1, 10(R2)` followed by `ADD R3, R1, R5` produces 3 explicit `STALL` cells. With forwarding enabled and split register access enabled, the same load-use dependency produces 1 `STALL` cell before `EX`.

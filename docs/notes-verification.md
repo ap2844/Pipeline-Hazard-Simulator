@@ -16,7 +16,7 @@ This file records how the simulator was checked against `Lab Assignment II.pdf`,
 
 ## Matching Note Examples
 
-The notes write stall cycles as `STALL`. The app keeps the same stall counts, but renders those stall cycles as blank amber pause columns so the whole cycle is visually empty.
+The notes write stall cycles as `STALL`. The app keeps the same convention and displays inserted RAW delays as explicit `STALL` cells.
 
 ### Load followed by dependent ADD
 

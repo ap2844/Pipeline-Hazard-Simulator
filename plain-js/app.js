@@ -502,30 +502,18 @@ function renderGrid() {
     return;
   }
 
-  const stallCycles = new Set();
-  state.trace.rows.forEach((row) => {
-    row.cells.forEach((value, index) => {
-      if (value === "STALL") stallCycles.add(index + 1);
-    });
-  });
-
-  const cycleHeaders = Array.from({ length: state.trace.totalCycles }, (_, index) => {
-    const cycle = index + 1;
-    return `<th class="${stallCycles.has(cycle) ? "pause-cycle" : ""}">${cycle}</th>`;
-  }).join("");
+  const cycleHeaders = Array.from({ length: state.trace.totalCycles }, (_, index) => `<th>${index + 1}</th>`).join("");
   const rows = state.trace.rows
     .map((row) => {
       const cells = row.cells
         .map((value, index) => {
           const cycle = index + 1;
-          const isPauseCycle = stallCycles.has(cycle);
-          const displayValue = isPauseCycle ? "" : value;
           const classes = [];
           if (cycle === state.cycle) classes.push("current-cycle");
           if (cycle > state.cycle) classes.push("future-cycle");
-          if (isPauseCycle) classes.push("pause-cycle");
-          if (!isPauseCycle && displayValue) classes.push("stage-cell");
-          return `<td class="${classes.join(" ")}">${cycle <= state.cycle ? displayValue : ""}</td>`;
+          if (value === "STALL") classes.push("stall-cell");
+          if (value && value !== "STALL") classes.push("stage-cell");
+          return `<td class="${classes.join(" ")}">${cycle <= state.cycle ? value : ""}</td>`;
         })
         .join("");
 

@@ -34,7 +34,7 @@ Recommended filenames:
 - `instruction-editor.png`: show the typeable dropdown instruction editor with one example loaded.
 - `four-stage.png`: show 4-stage mode with the `MEM/WB` stage visible.
 - `five-stage.png`: show 5-stage mode with separate `MEM` and `WB` stages visible.
-- `baseline-stalls.png`: show a RAW hazard with forwarding off and visible blank pause columns.
+- `baseline-stalls.png`: show a RAW hazard with forwarding off and visible `STALL` cells.
 - `forwarding-comparison.png`: show the same program after forwarding reduces stalls.
 - `hazard-panel.png`: show producer, consumer, register, stall count, and resolution.
 
@@ -49,7 +49,7 @@ docs/screenshots/demo.gif
 Suggested GIF flow:
 
 1. Load `Load-use hazard`.
-2. Step until the first blank pause column appears.
+2. Step until the first `STALL` cell appears.
 3. Toggle `Forwarding` and `Split reg`.
 4. Reset and step again to show the shorter forwarding schedule.
 

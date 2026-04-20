@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="no-store" />
     <title>Pipeline Hazard Simulator</title>
-    <link rel="stylesheet" href="./styles.css?v=fallout-clean-20260420" />
+    <link rel="stylesheet" href="./styles.css?v=black-green-20260420" />
   </head>
   <body>
     <main class="app-shell">
@@ -13,7 +13,7 @@
         <p class="eyebrow">FoCS Course Project</p>
         <h1>Pipeline Hazard Simulator</h1>
         <p>Visualize RAW hazards, stalls, and forwarding across 4-stage and 5-stage in-order pipelines.</p>
-        <p class="top-note">Stall cycles render as blank pause columns. The hazard panel lists which RAW dependency caused each pause.</p>
+        <p class="top-note">STALL cells mark RAW delay cycles. The hazard panel lists the producer, consumer, register, and resolution.</p>
       </header>
 
       <div class="workspace">
@@ -91,7 +91,7 @@
             <div id="pipelineGrid" class="table-wrap"></div>
             <div class="trace-legend" aria-label="Pipeline table legend">
               <span>[IF]/[ID]/[EX]/[MEM]/[WB] = occupied pipeline stage</span>
-              <span>blank amber column = inserted RAW stall cycle</span>
+              <span>STALL = inserted RAW delay</span>
               <span>blank = not started yet or already completed</span>
               <span>no forwarding + no split reg makes load-use show 3 stalls</span>
             </div>
@@ -100,6 +100,6 @@
       </div>
     </main>
 
-    <script src="./app.js?v=fallout-clean-20260420"></script>
+    <script src="./app.js?v=black-green-20260420"></script>
   </body>
 </html>

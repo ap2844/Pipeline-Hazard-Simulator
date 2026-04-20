@@ -1,22 +1,22 @@
 :root {
   color-scheme: dark;
-  --bg: #11130d;
-  --case: #2e3324;
-  --case-dark: #1b2017;
-  --screen: #07100a;
-  --screen-soft: #0d1b10;
-  --panel: rgba(8, 18, 10, 0.94);
-  --ink: #c9ffc0;
-  --muted: #86b77a;
-  --dim: #496b43;
-  --line: #36552f;
-  --line-strong: #7ef46f;
-  --accent: #70ff63;
-  --accent-strong: #d7ffd1;
-  --amber: #f1c65b;
-  --amber-soft: #352d16;
-  --danger: #ff8f6b;
-  --shadow: 0 20px 70px rgba(0, 0, 0, 0.44), inset 0 0 0 1px rgba(201, 255, 192, 0.08);
+  --bg: #010501;
+  --case: #050c05;
+  --case-dark: #020602;
+  --screen: #020802;
+  --screen-soft: #061206;
+  --panel: rgba(3, 12, 4, 0.95);
+  --ink: #d9ffd9;
+  --muted: #86c986;
+  --dim: #3e6d3f;
+  --line: #1e5c25;
+  --line-strong: #51ff68;
+  --accent: #39ff56;
+  --accent-strong: #effff0;
+  --glow: #9dffa8;
+  --glow-soft: #0d1d0f;
+  --danger: #a8ff9e;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.62), inset 0 0 0 1px rgba(57, 255, 86, 0.08);
   font-family: "Courier New", Courier, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -38,8 +38,9 @@ body {
   min-width: 320px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 0%, rgba(126, 244, 111, 0.12), transparent 38rem),
-    linear-gradient(135deg, #1b1e15, #080b07 62%, #15180f);
+    radial-gradient(circle at 50% 0%, rgba(57, 255, 86, 0.13), transparent 36rem),
+    radial-gradient(circle at 90% 100%, rgba(57, 255, 86, 0.055), transparent 28rem),
+    linear-gradient(135deg, #020602, #000 58%, #041004);
   color: var(--ink);
 }
 
@@ -83,7 +84,7 @@ button:disabled {
 
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid var(--amber);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -99,9 +100,9 @@ input:focus-visible {
   padding: 16px;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 90px),
+    linear-gradient(180deg, rgba(57, 255, 86, 0.055), transparent 90px),
     var(--case);
-  border: 1px solid #4b523b;
+  border: 1px solid #173d1c;
   border-radius: 8px;
   box-shadow: var(--shadow);
 }
@@ -110,7 +111,7 @@ input:focus-visible {
   content: "";
   position: absolute;
   inset: 8px;
-  border: 1px solid rgba(126, 244, 111, 0.16);
+  border: 1px solid rgba(57, 255, 86, 0.16);
   border-radius: 5px;
   pointer-events: none;
 }
@@ -120,12 +121,12 @@ input:focus-visible {
   padding: 8px 10px 10px;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: linear-gradient(180deg, rgba(112, 255, 99, 0.08), rgba(7, 16, 10, 0.96));
+  background: linear-gradient(180deg, rgba(57, 255, 86, 0.085), rgba(2, 8, 2, 0.97));
 }
 
 .eyebrow {
   margin: 0 0 6px;
-  color: var(--amber);
+  color: var(--accent);
   font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -138,7 +139,7 @@ input:focus-visible {
   line-height: 1.05;
   letter-spacing: 0;
   text-transform: uppercase;
-  text-shadow: 0 0 16px rgba(112, 255, 99, 0.38);
+  text-shadow: 0 0 16px rgba(57, 255, 86, 0.38);
 }
 
 .app-header > p:not(.eyebrow) {
@@ -149,7 +150,7 @@ input:focus-visible {
 }
 
 .top-note {
-  color: var(--amber) !important;
+  color: var(--glow) !important;
 }
 
 .workspace {
@@ -181,9 +182,9 @@ input:focus-visible {
   border: 1px solid var(--line);
   border-radius: 6px;
   background:
-    linear-gradient(180deg, rgba(112, 255, 99, 0.045), transparent 78px),
+    linear-gradient(180deg, rgba(57, 255, 86, 0.052), transparent 78px),
     var(--panel);
-  box-shadow: inset 0 0 24px rgba(112, 255, 99, 0.045);
+  box-shadow: inset 0 0 28px rgba(57, 255, 86, 0.05);
 }
 
 .panel {
@@ -224,7 +225,7 @@ input:focus-visible {
 .segmented button:hover {
   border-color: var(--accent);
   color: var(--accent-strong);
-  box-shadow: 0 0 18px rgba(112, 255, 99, 0.18);
+  box-shadow: 0 0 18px rgba(57, 255, 86, 0.2);
 }
 
 .icon-button {
@@ -275,7 +276,7 @@ input:focus-visible {
 }
 
 .instruction-row label {
-  color: var(--amber);
+  color: var(--glow);
   font-weight: 900;
 }
 
@@ -297,13 +298,13 @@ input:focus-visible {
   padding: 0 68px 0 12px;
   color: var(--ink);
   background: var(--screen);
-  caret-color: var(--amber);
+  caret-color: var(--accent);
   transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .instruction-row input:focus {
   border-color: var(--accent);
-  box-shadow: inset 0 0 20px rgba(112, 255, 99, 0.08), 0 0 16px rgba(112, 255, 99, 0.16);
+  box-shadow: inset 0 0 20px rgba(57, 255, 86, 0.08), 0 0 16px rgba(57, 255, 86, 0.16);
 }
 
 .instruction-row input::placeholder {
@@ -321,7 +322,7 @@ input:focus-visible {
   border-left: 1px solid var(--line);
   border-radius: 0 3px 3px 0;
   background: #172617;
-  color: var(--amber);
+  color: var(--glow);
   font-size: 0.66rem;
   font-weight: 900;
   pointer-events: none;
@@ -339,7 +340,7 @@ input:focus-visible {
   border: 1px solid var(--line-strong);
   border-radius: 4px;
   background: #081209;
-  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.72), 0 0 24px rgba(112, 255, 99, 0.14);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.72), 0 0 24px rgba(57, 255, 86, 0.15);
 }
 
 .instruction-combo.open .instruction-suggestions {
@@ -354,7 +355,7 @@ input:focus-visible {
   align-items: center;
   gap: 10px;
   border: 0;
-  border-bottom: 1px solid rgba(112, 255, 99, 0.18);
+  border-bottom: 1px solid rgba(57, 255, 86, 0.18);
   border-radius: 0;
   padding: 7px 10px;
   background: transparent;
@@ -377,7 +378,7 @@ input:focus-visible {
 }
 
 .instruction-suggestions small {
-  color: var(--amber);
+  color: var(--glow);
   font-size: 0.64rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -397,10 +398,10 @@ input:focus-visible {
 .error-box {
   margin-top: 8px;
   padding: 8px 10px;
-  border: 1px solid var(--danger);
+  border: 1px solid var(--line-strong);
   border-radius: 4px;
-  color: #ffd1c2;
-  background: #321811;
+  color: var(--accent-strong);
+  background: #071607;
 }
 
 .controls-panel {
@@ -479,7 +480,7 @@ input:focus-visible {
 .cycle-readout strong {
   color: var(--accent-strong);
   font-size: 1.18rem;
-  text-shadow: 0 0 12px rgba(112, 255, 99, 0.42);
+  text-shadow: 0 0 12px rgba(57, 255, 86, 0.42);
 }
 
 .summary-grid {
@@ -573,11 +574,6 @@ input:focus-visible {
   font-size: 0.74rem;
 }
 
-.pipeline-table thead th.pause-cycle {
-  color: var(--amber);
-  background: var(--amber-soft);
-}
-
 .pipeline-table .instruction-col {
   width: 230px;
   padding: 0 9px;
@@ -595,7 +591,7 @@ input:focus-visible {
   margin-right: 6px;
   border-radius: 4px;
   background: #172617;
-  color: var(--amber);
+  color: var(--glow);
   border: 1px solid var(--line);
   font-weight: 900;
 }
@@ -617,13 +613,23 @@ input:focus-visible {
   color: var(--muted);
 }
 
-.pause-cycle {
-  background: var(--amber-soft);
+.stall-cell {
+  background:
+    linear-gradient(180deg, rgba(57, 255, 86, 0.16), rgba(57, 255, 86, 0.055)),
+    #071507;
+  color: var(--accent-strong);
+  font-weight: 900;
+  text-shadow: 0 0 12px rgba(57, 255, 86, 0.48);
 }
 
-td.pause-cycle {
-  color: transparent;
-  box-shadow: inset 0 0 18px rgba(241, 198, 91, 0.05);
+.stall-cell::before {
+  content: "!";
+  color: var(--glow);
+}
+
+.stall-cell::after {
+  content: "!";
+  color: var(--glow);
 }
 
 .future-cycle {
@@ -631,12 +637,13 @@ td.pause-cycle {
   color: transparent;
 }
 
-.future-cycle.pause-cycle {
+.future-cycle.stall-cell {
   background: #07100a;
+  text-shadow: none;
 }
 
 .current-cycle {
-  box-shadow: inset 0 0 0 2px var(--amber), 0 0 16px rgba(241, 198, 91, 0.22);
+  box-shadow: inset 0 0 0 2px var(--accent), 0 0 16px rgba(57, 255, 86, 0.26);
 }
 
 .hazard-list {
@@ -662,7 +669,7 @@ td.pause-cycle {
 }
 
 .hazard-list span {
-  color: var(--amber);
+  color: var(--glow);
   font-size: 0.72rem;
   font-weight: 900;
   text-transform: uppercase;
