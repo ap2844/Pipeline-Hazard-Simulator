@@ -24,7 +24,7 @@ plain-js/index.html
 
 ## What It Shows
 
-The simulator visualizes how instructions move through a single-issue, in-order pipeline. It highlights RAW hazards, inserts explicit `STALL` cells, and lets forwarding visibly reduce stalls where the lecture notes say forwarding should help.
+The simulator visualizes how instructions move through a single-issue, in-order pipeline. It highlights RAW hazards, renders inserted stalls as blank pause columns, and lets forwarding visibly reduce stalls where the lecture notes say forwarding should help.
 
 Good demo sequence:
 
@@ -71,6 +71,7 @@ http://localhost:8000
 - Split register access toggle.
 - Step, run/pause, and reset controls.
 - Pipeline table, hazard explanations, total cycle count, and stall count.
+- Clean Fallout-style terminal theme with restrained CRT scanlines.
 
 ## Screenshots and Demo GIF
 
@@ -102,4 +103,4 @@ docs/notes-verification.md  Cross-check against the assignment and hazard notes
 
 The project was implemented as a browser-based simulator using HTML, CSS, and JavaScript. JavaScript handles instruction parsing, RAW dependency detection, stall insertion, forwarding behavior, and cycle-by-cycle trace generation. HTML and CSS implement the instruction editor, controls, hazard panel, and pipeline execution table.
 
-Timing note: with forwarding disabled and split register access disabled, `LW R1, 10(R2)` followed by `ADD R3, R1, R5` produces 3 stalls. With forwarding enabled and split register access enabled, the same load-use dependency produces the note-style `IF ID STALL EX ...` sequence with 1 stall.
+Timing note: with forwarding disabled and split register access disabled, `LW R1, 10(R2)` followed by `ADD R3, R1, R5` produces 3 blank pause columns. With forwarding enabled and split register access enabled, the same load-use dependency produces 1 blank pause column before `EX`.

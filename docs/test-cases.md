@@ -28,7 +28,7 @@ SW R9, 4(R10)
 Expected behavior:
 
 - No RAW hazards.
-- No `STALL` cells.
+- No blank pause columns.
 - Both 4-stage and 5-stage modes show smooth overlapping execution.
 
 Recommended screenshot:
@@ -59,7 +59,7 @@ Expected behavior with forwarding:
 
 Recommended screenshot:
 
-- Capture 5-stage baseline with visible `STALL` cells.
+- Capture 5-stage baseline with visible blank pause columns.
 - Capture the same case with forwarding enabled and fewer stalls.
 
 ## 3. Load-Use Hazard
@@ -81,12 +81,12 @@ Expected behavior without forwarding:
 Expected behavior with forwarding:
 
 - The load-use dependency still requires one stall.
-- The dependent instruction displays the note-style sequence `IF ID STALL EX ...`.
+- The pipeline table displays one blank pause column before the dependent `EX`.
 - The hazard panel reports `load use stall`.
 
 Recommended screenshot:
 
-- Capture forwarding enabled after stepping to the first `STALL`.
+- Capture forwarding enabled after stepping to the first blank pause column.
 - Capture the hazard explanation panel.
 
 ## 4. Forwarding Comparison

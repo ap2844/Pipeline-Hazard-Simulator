@@ -11,4 +11,4 @@
 - When forwarding is on and split register access is on, a load-use dependency produces 1 stall.
 - Forwarding is modeled as a timing improvement in the schedule and hazard explanation, not as a datapath animation.
 - Empty table cells mean the instruction has not started yet or has already completed.
-- Inserted delays are always labeled explicitly as `STALL`.
+- Inserted delays are counted as stalls and rendered as blank amber pause columns across the whole table.

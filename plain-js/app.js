@@ -51,8 +51,6 @@ const state = {
 };
 
 const dom = {
-  matrixCanvas: document.querySelector("#matrixCanvas"),
-  matrixStatus: document.querySelector("#matrixStatus"),
   instructionList: document.querySelector("#instructionList"),
   addInstruction: document.querySelector("#addInstruction"),
   examples: document.querySelector("#examples"),
@@ -316,7 +314,6 @@ function renderSimulation() {
   renderStageKey();
   renderHazards();
   renderGrid();
-  renderMatrixStatus();
 }
 
 function renderExamples() {
@@ -505,18 +502,30 @@ function renderGrid() {
     return;
   }
 
-  const cycleHeaders = Array.from({ length: state.trace.totalCycles }, (_, index) => `<th>${index + 1}</th>`).join("");
+  const stallCycles = new Set();
+  state.trace.rows.forEach((row) => {
+    row.cells.forEach((value, index) => {
+      if (value === "STALL") stallCycles.add(index + 1);
+    });
+  });
+
+  const cycleHeaders = Array.from({ length: state.trace.totalCycles }, (_, index) => {
+    const cycle = index + 1;
+    return `<th class="${stallCycles.has(cycle) ? "pause-cycle" : ""}">${cycle}</th>`;
+  }).join("");
   const rows = state.trace.rows
     .map((row) => {
       const cells = row.cells
         .map((value, index) => {
           const cycle = index + 1;
+          const isPauseCycle = stallCycles.has(cycle);
+          const displayValue = isPauseCycle ? "" : value;
           const classes = [];
           if (cycle === state.cycle) classes.push("current-cycle");
           if (cycle > state.cycle) classes.push("future-cycle");
-          if (value === "STALL") classes.push("stall-cell");
-          if (value && value !== "STALL") classes.push("stage-cell");
-          return `<td class="${classes.join(" ")}">${cycle <= state.cycle ? value : ""}</td>`;
+          if (isPauseCycle) classes.push("pause-cycle");
+          if (!isPauseCycle && displayValue) classes.push("stage-cell");
+          return `<td class="${classes.join(" ")}">${cycle <= state.cycle ? displayValue : ""}</td>`;
         })
         .join("");
 
@@ -539,13 +548,6 @@ function renderGrid() {
   `;
 }
 
-function renderMatrixStatus() {
-  const status = state.running ? "RUNNING" : state.cycle >= state.trace.totalCycles && state.trace.totalCycles > 0 ? "COMPLETE" : "READY";
-  const forwarding = state.forwarding ? "FWD:ON" : "FWD:OFF";
-  const split = state.splitAccess ? "SPLIT:ON" : "SPLIT:OFF";
-  dom.matrixStatus.textContent = `SYSTEM:${status} | CYCLE:${state.cycle}/${state.trace.totalCycles} | ${state.kind} | ${forwarding} | ${split}`;
-}
-
 function render() {
   recalculate();
   renderInstructions();
@@ -555,7 +557,6 @@ function render() {
   renderStageKey();
   renderHazards();
   renderGrid();
-  renderMatrixStatus();
 }
 
 function escapeHtml(value) {
@@ -565,62 +566,6 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
-}
-
-function startMatrixCanvas() {
-  const canvas = dom.matrixCanvas;
-  if (!canvas) return;
-
-  const context = canvas.getContext("2d");
-  if (!context) return;
-
-  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const glyphs = "010101110010PIPELINERAWSTALLFORWARDMEMWBEXID";
-  let width = 0;
-  let height = 0;
-  let columns = 0;
-  let drops = [];
-
-  function resize() {
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = Math.floor(width * pixelRatio);
-    canvas.height = Math.floor(height * pixelRatio);
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-    columns = Math.ceil(width / 18);
-    drops = Array.from({ length: columns }, () => Math.random() * -height);
-  }
-
-  function draw() {
-    context.fillStyle = "rgba(0, 4, 0, 0.18)";
-    context.fillRect(0, 0, width, height);
-    context.font = "16px Courier New, monospace";
-
-    for (let column = 0; column < columns; column += 1) {
-      const x = column * 18;
-      const y = drops[column];
-      const glyph = glyphs[Math.floor(Math.random() * glyphs.length)];
-
-      context.fillStyle = Math.random() > 0.96 ? "#d8ffe0" : "#00ff41";
-      context.shadowColor = "#00ff41";
-      context.shadowBlur = 8;
-      context.fillText(glyph, x, y);
-
-      drops[column] = y + 18;
-      if (drops[column] > height + Math.random() * 600) {
-        drops[column] = -Math.random() * 320;
-      }
-    }
-
-    if (!reduceMotion) window.requestAnimationFrame(draw);
-  }
-
-  resize();
-  window.addEventListener("resize", resize);
-  draw();
 }
 
 dom.addInstruction.addEventListener("click", () => {
@@ -685,6 +630,5 @@ dom.reset.addEventListener("click", () => {
   render();
 });
 
-startMatrixCanvas();
 renderExamples();
 render();
