@@ -532,6 +532,7 @@ input:focus-visible {
   border: 1px solid var(--line);
   border-radius: 5px;
   background: var(--screen);
+  position: relative;
 }
 
 .trace-legend {
@@ -587,6 +588,14 @@ input:focus-visible {
   color: var(--ink);
   text-align: left;
   font-size: 0.8rem;
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  box-shadow: 1px 0 0 rgba(54, 85, 47, 0.95), 10px 0 18px rgba(0, 0, 0, 0.28);
+}
+
+.pipeline-table thead .instruction-col {
+  z-index: 4;
 }
 
 .instruction-badge {
