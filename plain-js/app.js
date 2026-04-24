@@ -417,6 +417,13 @@ function renderInstructions() {
       }
     });
     input.addEventListener("blur", () => {
+      try {
+        if (state.lines[index].trim()) {
+          state.lines[index] = parseInstruction(state.lines[index], `I${index + 1}`).text;
+        }
+      } catch (error) {
+        // Keep the user's raw text when the instruction is still invalid.
+      }
       state.editingIndex = null;
       combo.classList.remove("open");
       input.setAttribute("aria-expanded", "false");
@@ -540,7 +547,7 @@ function renderGrid() {
     .join("");
 
   dom.pipelineGrid.innerHTML = `
-    <table class="pipeline-table">
+    <table class="pipeline-table" style="min-width: ${248 + state.trace.totalCycles * 84}px;">
       <thead>
         <tr><th class="instruction-col">Instruction</th>${cycleHeaders}</tr>
       </thead>

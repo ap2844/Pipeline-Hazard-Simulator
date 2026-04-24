@@ -28,6 +28,7 @@ If `xdg-open` is not available, open the file manually from your file browser.
 
 - Editable instruction list with a maximum of 10 instructions.
 - Every instruction row is a typeable dropdown for complete instruction templates.
+- Instruction input is case-insensitive and normalizes to canonical uppercase formatting.
 - Supported instructions: `ADD`, `SUB`, `LW`, `SW`.
 - Supports registers `R0` through `R31`.
 - Supports signed offsets such as `LW R1, -4(R2)`.

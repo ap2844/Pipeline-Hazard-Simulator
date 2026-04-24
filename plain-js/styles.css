@@ -552,8 +552,7 @@ input:focus-visible {
 }
 
 .pipeline-table {
-  width: 100%;
-  min-width: 710px;
+  width: auto;
   border-collapse: separate;
   border-spacing: 0;
   table-layout: fixed;
@@ -561,11 +560,17 @@ input:focus-visible {
 
 .pipeline-table th,
 .pipeline-table td {
-  height: 36px;
+  width: 84px;
+  min-width: 84px;
+  height: 38px;
+  padding: 0 6px;
   border-right: 1px solid rgba(54, 85, 47, 0.85);
   border-bottom: 1px solid rgba(54, 85, 47, 0.85);
   text-align: center;
   vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
 }
 
 .pipeline-table thead th {
@@ -575,7 +580,8 @@ input:focus-visible {
 }
 
 .pipeline-table .instruction-col {
-  width: 230px;
+  width: 248px;
+  min-width: 248px;
   padding: 0 9px;
   background: #0d1b10;
   color: var(--ink);
@@ -600,6 +606,7 @@ input:focus-visible {
   background: #102611;
   color: var(--accent-strong);
   font-weight: 900;
+  font-size: 0.78rem;
   text-shadow: 0 0 10px rgba(112, 255, 99, 0.38);
 }
 
@@ -619,6 +626,7 @@ input:focus-visible {
     #071507;
   color: var(--accent-strong);
   font-weight: 900;
+  font-size: 0.74rem;
   text-shadow: 0 0 12px rgba(57, 255, 86, 0.48);
 }
 
@@ -721,6 +729,7 @@ input:focus-visible {
   }
 
   .pipeline-table .instruction-col {
-    width: 210px;
+    width: 228px;
+    min-width: 228px;
   }
 }

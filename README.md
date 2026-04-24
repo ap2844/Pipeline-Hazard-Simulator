@@ -61,6 +61,7 @@ http://localhost:8000
 
 - Up to 10 editable instructions.
 - Every instruction row is a typeable dropdown for complete instruction templates.
+- Instruction input is case-insensitive and normalizes to canonical uppercase formatting.
 - Supported instructions: `ADD`, `SUB`, `LW`, `SW`.
 - Register syntax: `R0` through `R31`, case-insensitive.
 - Memory syntax: `LW R1, 0(R2)` and `SW R1, -4(R2)`.
