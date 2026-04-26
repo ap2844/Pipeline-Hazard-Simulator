@@ -74,20 +74,6 @@ http://localhost:8000
 - Pipeline table, hazard explanations, total cycle count, and stall count.
 - Clean black-and-green terminal theme with restrained CRT scanlines.
 
-## Screenshots and Demo GIF
-
-Screenshots are not committed yet. Recommended files to add before final submission:
-
-```text
-docs/screenshots/instruction-editor.png
-docs/screenshots/baseline-stalls.png
-docs/screenshots/forwarding-comparison.png
-docs/screenshots/hazard-panel.png
-docs/screenshots/demo.gif
-```
-
-Use the checklist in [docs/report-assets.md](docs/report-assets.md) to capture the images for the report.
-
 ## Project Layout
 
 ```text
@@ -96,7 +82,6 @@ plain-js/index.html   Page structure
 plain-js/styles.css   Visual design and responsive layout
 plain-js/app.js       Parser, scheduler, hazards, controls, and rendering
 plain-js/README.md    Notes for the plain-JS version
-docs/report-assets.md Screenshot and GIF capture checklist
 docs/notes-verification.md  Cross-check against the assignment and hazard notes
 ```
 

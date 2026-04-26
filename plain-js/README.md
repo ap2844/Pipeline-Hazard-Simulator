@@ -40,7 +40,7 @@ If `xdg-open` is not available, open the file manually from your file browser.
 - Step, run/pause, and reset controls.
 - Stalls rendered as explicit `STALL` cells.
 - RAW hazard explanation panel.
-- Built-in example programs for report screenshots.
+- Built-in example programs for verification and report evidence.
 
 ## Best Report Wording
 

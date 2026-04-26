@@ -1,6 +1,6 @@
 # Test Cases and Report Evidence
 
-Use these cases in the final report screenshots. Each case is represented in the built-in example buttons in `plain-js/index.html`.
+Use these cases to verify the simulator behavior. Each case is represented in the built-in example buttons in `plain-js/index.html`.
 
 Live demo for report and sharing:
 
@@ -31,10 +31,10 @@ Expected behavior:
 - No `STALL` cells.
 - Both 4-stage and 5-stage modes show smooth overlapping execution.
 
-Recommended screenshot:
+Recommended check:
 
 - Load the "No dependencies" example.
-- Capture one 5-stage run near the final cycle.
+- Run one 5-stage trace near the final cycle and confirm no stalls are inserted.
 
 ## 2. Arithmetic RAW
 
@@ -57,10 +57,10 @@ Expected behavior with forwarding:
 - The dependency is still detected.
 - ALU forwarding avoids the stall.
 
-Recommended screenshot:
+Recommended check:
 
-- Capture 5-stage baseline with visible `STALL` cells.
-- Capture the same case with forwarding enabled and fewer stalls.
+- Compare the 5-stage baseline with the same case after forwarding is enabled.
+- Confirm the forwarding run has fewer stalls.
 
 ## 3. Load-Use Hazard
 
@@ -84,10 +84,10 @@ Expected behavior with forwarding:
 - The dependent instruction displays the note-style sequence `IF ID STALL EX ...`.
 - The hazard panel reports `load use stall`.
 
-Recommended screenshot:
+Recommended check:
 
-- Capture forwarding enabled after stepping to the first `STALL` cell.
-- Capture the hazard explanation panel.
+- Enable forwarding and step to the first `STALL` cell.
+- Confirm the hazard explanation panel reports the load-use stall.
 
 ## 4. Forwarding Comparison
 
@@ -106,19 +106,9 @@ Expected behavior:
 - Forwarding removes the ALU stall but keeps the load-use stall.
 - Total cycles and stall count decrease when forwarding is enabled.
 
-Recommended screenshot:
+Recommended check:
 
-- Capture summary cards and pipeline table before and after enabling forwarding.
-
-## Screenshot Checklist
-
-- Instruction editor with at least one example loaded.
-- 4-stage mode showing `MEM/WB`.
-- 5-stage mode showing separate `MEM` and `WB`.
-- Baseline RAW stall table.
-- Forwarding-enabled comparison table.
-- Hazard explanation panel.
-- Summary cards with total cycles and stall count.
+- Compare the summary cards and pipeline table before and after enabling forwarding.
 
 ## Acceptance Checklist
 
@@ -129,4 +119,4 @@ Recommended screenshot:
 - Step, run/pause, and reset do not delete the program.
 - 4-stage and 5-stage modes produce visibly different schedules when hazards require stalls.
 - Forwarding changes the schedule for arithmetic RAW dependencies and is listed in the hazard panel.
-- Final submission includes a PDF report with assumptions, screenshots, run instructions, and these test cases.
+- Final submission includes a PDF report with assumptions, run instructions, and these test cases.
