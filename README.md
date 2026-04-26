@@ -82,6 +82,8 @@ plain-js/index.html   Page structure
 plain-js/styles.css   Visual design and responsive layout
 plain-js/app.js       Parser, scheduler, hazards, controls, and rendering
 plain-js/README.md    Notes for the plain-JS version
+docs/assumptions.md   Simulator assumptions and timing model
+docs/test-cases.md    Manual verification cases
 docs/notes-verification.md  Cross-check against the assignment and hazard notes
 ```
 

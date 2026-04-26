@@ -420,6 +420,7 @@ function renderInstructions() {
       try {
         if (state.lines[index].trim()) {
           state.lines[index] = parseInstruction(state.lines[index], `I${index + 1}`).text;
+          input.value = state.lines[index];
         }
       } catch (error) {
         // Keep the user's raw text when the instruction is still invalid.

@@ -49,8 +49,10 @@ ADD R6, R7, R8
 Expected behavior without forwarding:
 
 - `I2` depends on `I1` through `R1`.
-- 5-stage baseline inserts two stalls.
-- 4-stage baseline inserts one stall.
+- 5-stage baseline inserts three stalls when split register access is off.
+- 5-stage baseline inserts two stalls when split register access is on.
+- 4-stage baseline inserts two stalls when split register access is off.
+- 4-stage baseline inserts one stall when split register access is on.
 
 Expected behavior with forwarding:
 

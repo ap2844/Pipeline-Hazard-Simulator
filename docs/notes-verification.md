@@ -55,7 +55,7 @@ SUB R4, R1, R5
 ```
 
 - With forwarding: `0` extra stalls, matching the EX-to-EX forwarding examples.
-- Without forwarding and split register access: `2` stalls, matching the extra-question note that same-cycle write/read allows the consumer to decode in the producer's WB cycle.
+- Without forwarding and with split register access: `2` stalls, matching the extra-question note that same-cycle write/read allows the consumer to decode in the producer's WB cycle.
 - Without forwarding and without split register access: `3` stalls, matching the stricter no-split rule.
 
 ## Outside App Scope
